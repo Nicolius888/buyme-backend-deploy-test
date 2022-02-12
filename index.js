@@ -5,7 +5,7 @@ const showErrors = require("./src/messageConsole");
 const { conn } = require("./src/database/db.js");
 const userRoot = require("./src/controllers/userRoot/userRoot.controller");
 
-const { PORT } = process.env;
+const PORT = process.env.PORT || 3001;
 
 // Start server
 
