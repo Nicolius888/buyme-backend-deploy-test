@@ -9,35 +9,25 @@ const {encrypt} = require('../handleBcrypts/handleBcrypts')
 
 async function updateUser(id, name, password, email, role, token){
 
-    const statusUser = await User.findByPk(parseInt(id));
-    
+    try {
+        
+        password = await encrypt(password);
+        
+        const userUpdate = await User.update({
+            name,
+            password,
+            email,
+            role,
+            token
+        },
+        {where: {id : parseInt(id)}}
+        );
 
-    if(statusUser.status){
+        if(userUpdate > 0) return true;
+        else return false;
 
-        try {
-
-            password = await encrypt(password);
-            
-            const userUpdate = await User.update({
-                name,
-                password,
-                email,
-                role,
-            
-                
-            },
-            {where: {id : parseInt(id)}}
-            );
-    
-            if(userUpdate > 0) return true;
-            else return false;
-    
-        } catch (error) {
-            showErrors('updateUser', error)
-            return false;
-        }
-
-    }else{
+    } catch (error) {
+        showErrors('updateUser', error)
         return false;
     }
 
