@@ -31,13 +31,5 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    clientId: {
-      type: DataTypes.INTEGER,           //Se agrega como clave para acceder a Modelo Client
-      allowNull: false,
-    },
-    invoiceId: {
-      type: DataTypes.INTEGER,           //Se agrega como clave para acceder a Modelo Invoice
-      allowNull: false,
-    }  
   });
 };

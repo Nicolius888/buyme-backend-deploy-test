@@ -22,7 +22,6 @@ router.put("/", async (req, res) => {
     inventary,
     featured,
     paused,
-    
   } = req.body;
 
   if (name) {
@@ -41,8 +40,7 @@ router.put("/", async (req, res) => {
         stock,
         inventary,
         featured,
-        paused,
-        
+        paused
       );
 
       if (update) return res.json({ message: "Updated product", data: update });
